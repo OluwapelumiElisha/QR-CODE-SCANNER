@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { publicRequest } from "@/Shared/API/Request";
+import { toast } from "@/hooks/use-toast";
 
 
 
@@ -24,7 +26,25 @@ export const useLogin = () =>{
 
     const onSubmit = async (data) => {
 
-
+        // console.log(data);
+        try {
+            const res = await publicRequest.post('/api/v1/loginuser', data)
+            localStorage.setItem('token', res?.data?.token)
+            toast({
+                title: "✔️✔️✔️",
+                description: "Welcome Back",
+              });
+            
+        } catch (error) {
+            console.log(error);
+            if (error) {
+                toast({
+                  title: "ERROR",
+                  description: 'Invalid Login Credentail',
+                });
+              }
+            
+        }
 
 
 

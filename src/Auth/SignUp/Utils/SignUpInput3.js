@@ -1,4 +1,4 @@
-export const LoginInput =  [
+export const SignUpInput3 =  [
     {
         name: "email",
         type: "email",
