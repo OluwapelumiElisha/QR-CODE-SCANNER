@@ -43,7 +43,7 @@ const SignUp = () => {
           </div>
           <div className='flex  justify-center mt-0 max-w-sm sm:max-w-sm md:max-w-md lg:ms-[36%] md:ms-[33%] ms-[12.5%] w-[80%]'>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
+            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full text-white'>
               {SignUpInput.map((elem, i) => (
                 <div key={i + elem.name} className="relative mb-4">
                   <GenericForminput
@@ -65,7 +65,7 @@ const SignUp = () => {
           </div>
           <div className='flex  justify-center mt-0 max-w-sm sm:max-w-sm md:max-w-md lg:ms-[36%] md:ms-[33%] ms-[12.5%] w-[80%]'>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
+            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full text-white'>
               {SignUpInput2.map((elem, i) => (
                 <div key={i + elem.name} className="relative mb-4">
                   <GenericForminput
@@ -88,7 +88,7 @@ const SignUp = () => {
 
           <div className='flex  justify-center mt-0 max-w-sm sm:max-w-sm md:max-w-md lg:ms-[36%] md:ms-[33%] ms-[12.5%] w-[80%]'>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
+            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full text-white'>
               {SignUpInput3.map((elem, i) => (
                 <div key={i + elem.name} className="relative mb-4">
                   <GenericForminput

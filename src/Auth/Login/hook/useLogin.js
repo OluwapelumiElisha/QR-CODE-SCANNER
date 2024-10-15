@@ -3,6 +3,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { publicRequest } from "@/Shared/API/Request";
 import { toast } from "@/hooks/use-toast";
+import { useState } from "react";
+import {  useNavigate } from "react-router-dom";
 
 
 
@@ -19,6 +21,8 @@ const formSchema = z.object({
   });
 
 export const useLogin = () =>{
+    const navigate = useNavigate()
+    const [loading , setloading] = useState(false)
     const form = useForm({
         resolver: zodResolver(formSchema),
       });
@@ -27,6 +31,7 @@ export const useLogin = () =>{
     const onSubmit = async (data) => {
 
         // console.log(data);
+        setloading(true)
         try {
             const res = await publicRequest.post('/api/v1/loginuser', data)
             localStorage.setItem('token', res?.data?.token)
@@ -34,7 +39,7 @@ export const useLogin = () =>{
                 title: "✔️✔️✔️",
                 description: "Welcome Back",
               });
-            
+              navigate('/Dashboard')
         } catch (error) {
             console.log(error);
             if (error) {
@@ -43,17 +48,17 @@ export const useLogin = () =>{
                   description: 'Invalid Login Credentail',
                 });
               }
-            
         }
 
-
-
-
+        finally{
+          setloading(false)
+        }
       }
 
 
       return{
         form,
-        onSubmit
+        onSubmit,
+        loading
       }
 }

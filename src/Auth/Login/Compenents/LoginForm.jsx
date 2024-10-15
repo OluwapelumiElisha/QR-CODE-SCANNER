@@ -13,9 +13,8 @@ import { Button } from '@/components/ui/button';
 
 
 const LoginForm = () => {
- const { form, onSubmit} = useLogin()
+ const { form, onSubmit, loading} = useLogin()
  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-//  const navigate = useNavigate()
  const togglePasswordVisibility = () => {
    setIsPasswordVisible(!isPasswordVisible);
  };
@@ -35,7 +34,7 @@ const LoginForm = () => {
           </div>
           <div className='flex  justify-center mt-0 max-w-sm sm:max-w-sm md:max-w-md lg:ms-[36%] md:ms-[33%] ms-[12.5%] w-[80%]'>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
+            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full text-white'>
               {LoginInput.map((elem, i) => (
                 <div key={i + elem.name} className="relative mb-4">
                   <GenericForminput
@@ -56,7 +55,7 @@ const LoginForm = () => {
 
           <div className='flex  justify-center mt-0 max-w-sm sm:max-w-sm md:max-w-md lg:ms-[36%] md:ms-[33%] ms-[12.5%] w-[80%]'>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
+            <form onSubmit={form.handleSubmit(onSubmit)} className='w-full text-white'>
               {LoginInput2.map((elem, i) => (
                 <div key={i + elem.name} className="relative mb-4">
                   <GenericForminput
@@ -79,7 +78,7 @@ const LoginForm = () => {
               ))}
               
               <div className='flex justify-center items-center max-w-lg sm:max-w-sm md:max-w-md  '>
-                <Button type= 'submit' className='hover:bg-slate-100 text-black mt-4 bg-customYellow w-full px-6 py-3 flex justify-center items-center'>Log In </Button>
+                <Button disabled={loading} type= 'submit' className='hover:bg-slate-100 text-black mt-4 bg-customYellow w-full px-6 py-3 flex justify-center items-center' >{loading ? "Loading..." : "Log in"}</Button>
             </div>
             </form>
           </Form>
