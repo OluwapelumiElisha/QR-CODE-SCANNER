@@ -7,6 +7,7 @@ import Dashboard from "@/MainPage/Dashboard";
 import QRGenerator from "@/MainPage/Qr Generator/Component/QRGenerator";
 import QRG from "@/MainPage/Qr Generator";
 import Scanner from "@/MainPage/QR Scanner/Component/Scanner";
+import Scanner2 from "@/MainPage/QR Scanner/Component/Scanner2";
 
 
 export const routes = createBrowserRouter([
@@ -49,6 +50,10 @@ export const routes = createBrowserRouter([
           {
             path: 'Generate QR Code',
             element : <QRG/>
+          },
+          {
+            path: 'Meal Status',
+            element : <Scanner2/>
           }
         ],
       }

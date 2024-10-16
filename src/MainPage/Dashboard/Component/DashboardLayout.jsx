@@ -15,7 +15,7 @@ const DashboardLayout = ({ children }) => {
             {useList.map((elem, i) => (
              <NavLink key={i}
              className={({ isActive, isPending }) =>
-               isPending ? "pending" : isActive ? "text-red-500" : ""
+               isPending ? "pending" : isActive ? "text-yellow-600" : ""
              }
              to={elem.path}
            >
