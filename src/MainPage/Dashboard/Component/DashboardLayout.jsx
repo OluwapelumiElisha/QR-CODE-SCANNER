@@ -1,7 +1,6 @@
 import React from "react";
 import { useList } from "../utils/useLists";
 import { NavLink } from "react-router-dom";
-import Footer from "@/MainPage/Footer";
 
 const DashboardLayout = ({ children }) => {
   return (
@@ -11,10 +10,10 @@ const DashboardLayout = ({ children }) => {
           <section>
             {children}</section>
         {/* </div> */}
-        <div className="fixed w-full bottom-0 left-0 text-black bg-customColor">
+        <div className="fixed w-full bottom-0 left-0 text-white bg-customColor">
           <div className="flex justify-around py-1">
             {useList.map((elem, i) => (
-             <NavLink
+             <NavLink key={i}
              className={({ isActive, isPending }) =>
                isPending ? "pending" : isActive ? "text-red-500" : ""
              }

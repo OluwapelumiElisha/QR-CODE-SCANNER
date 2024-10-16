@@ -14,7 +14,7 @@ import { SignUpInput3 } from '../Utils/SignUpInput3';
 
 
 const SignUp = () => {
- const { form, onSubmit} = useSignUp()
+ const { form, onSubmit, loading} = useSignUp()
  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 //  const navigate = useNavigate()
  const togglePasswordVisibility = () => {
@@ -110,7 +110,7 @@ const SignUp = () => {
                 </div>
               ))}
               <div className='flex justify-center items-center max-w-lg sm:max-w-sm md:max-w-md  '>
-                <Button type = 'submit' className='hover:bg-slate-100 text-black mt-4 bg-customYellow w-full px-6 py-3 flex justify-center items-center'>Sign Up </Button>
+                <Button type = 'submit' disabled={loading} className='hover:bg-slate-100 text-black mt-4 bg-customYellow w-full px-6 py-3 flex justify-center items-center'>{loading ? "Loading..." : "Sign Up"} </Button>
                 
                 
             </div>

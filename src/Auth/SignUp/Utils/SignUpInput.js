@@ -1,6 +1,6 @@
 export const SignUpInput =  [
     {
-        name: "name",
+        name: "username",
         type: "text",
         placeholder: "Enter Username",
         required: true,

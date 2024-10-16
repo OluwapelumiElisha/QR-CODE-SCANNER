@@ -4,9 +4,9 @@ import Error from "../MainPage/ErrorPage/index";
 import ContEmail from "../Auth/ContinueEmail/index";
 import SignUp from "@/Auth/SignUp/Component/SignUp";
 import Dashboard from "@/MainPage/Dashboard";
-import DashboardLayout from "@/MainPage/Dashboard/Component/DashboardLayout";
-import Footer from "@/MainPage/Footer";
-
+import QRGenerator from "@/MainPage/Qr Generator/Component/QRGenerator";
+import QRG from "@/MainPage/Qr Generator";
+import Scanner from "@/MainPage/QR Scanner/Component/Scanner";
 
 
 export const routes = createBrowserRouter([
@@ -44,7 +44,11 @@ export const routes = createBrowserRouter([
           },
           {
             path: 'Scan Code',
-            element : <h1>scan code</h1>
+            element : <Scanner/>
+          },
+          {
+            path: 'Generate QR Code',
+            element : <QRG/>
           }
         ],
       }
