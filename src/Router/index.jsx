@@ -8,6 +8,7 @@ import QRGenerator from "@/MainPage/Qr Generator/Component/QRGenerator";
 import QRG from "@/MainPage/Qr Generator";
 import Scanner from "@/MainPage/QR Scanner/Component/Scanner";
 import Scanner2 from "@/MainPage/QR Scanner/Component/Scanner2";
+import QRHISTORY from "@/MainPage/History/Component/QRHISTORY";
 
 
 export const routes = createBrowserRouter([
@@ -54,6 +55,10 @@ export const routes = createBrowserRouter([
           {
             path: 'Meal Status',
             element : <Scanner2/>
+          },
+          {
+            path: "History",
+            element:  <QRHISTORY/>
           }
         ],
       }
