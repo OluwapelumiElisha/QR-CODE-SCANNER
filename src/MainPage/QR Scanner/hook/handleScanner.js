@@ -24,6 +24,7 @@ export const handleScanner = () => {
           description: "Successfully Scanned and Sent",
         });
         navigate('/Dashboard/Meal Status');
+        
       } catch (error) {
         console.log(error);
 

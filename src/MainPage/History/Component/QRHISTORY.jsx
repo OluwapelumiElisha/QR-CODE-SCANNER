@@ -1,6 +1,8 @@
 import React from 'react'
 import search from "@/assets/search.png"
+import { handleQrHistory } from '../hook/handleQrHistory'
 const QRHISTORY = () => {
+    const {handleHistory} = handleQrHistory()
   return (
     <div>
       <div className='bg-customColor h-screen overflow-auto'>
@@ -9,7 +11,7 @@ const QRHISTORY = () => {
         <input className='rounded-lg border-2 ml-12 w-[50%] bg-transparent' placeholder='Search List qr-code' type="text" />
         <img className='-ms-8 w-5 h-5 mt-1' src={search} alt="" />
         </div>
-        
+        <button onClick={handleHistory} className='text-white'></button>
       </div>
     </div>
   )
