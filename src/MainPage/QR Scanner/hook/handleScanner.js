@@ -21,7 +21,7 @@ export const handleScanner = () => {
 
         toast({
           title: "✔️ Success",
-          description: "Successfully Scanned and Sent",
+          description: "Successfully Scanned and Recorded",
         });
         navigate('/Dashboard/Meal Status');
         

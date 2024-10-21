@@ -9,6 +9,7 @@ import QRG from "@/MainPage/Qr Generator";
 import Scanner from "@/MainPage/QR Scanner/Component/Scanner";
 import Scanner2 from "@/MainPage/QR Scanner/Component/Scanner2";
 import QRHISTORY from "@/MainPage/History/Component/QRHISTORY";
+import EachQRHistory from "@/MainPage/History/Component/EachQRHistory";
 
 
 export const routes = createBrowserRouter([
@@ -59,6 +60,9 @@ export const routes = createBrowserRouter([
           {
             path: "History",
             element:  <QRHISTORY/>
+          },{
+            path: 'Each QR Code History',
+            element: <EachQRHistory/>
           }
         ],
       }
