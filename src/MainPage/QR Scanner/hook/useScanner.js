@@ -1,12 +1,11 @@
 import { toast } from "@/hooks/use-toast";
 import { publicRequest } from "@/Shared/API/Request";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";  // This is correct
+import { useNavigate } from "react-router-dom"; 
 
 export const useScanner = () => {
   const [scanResult, setScanResult] = useState(null); // To store the scan result
   const navigate = useNavigate() 
-  const [response, setResponse] = useState()
 
 
   const handleScan = async (data) => {
@@ -17,17 +16,17 @@ export const useScanner = () => {
 
       const qrNumber = data.text.split('#')[1];  // Extract "016"
       console.log(qrNumber);
-      setResponse(qrNumber)
       try {
         const res = await publicRequest.post('/api/v1/scan', { qrNumber });
         console.log(res);
-        
         toast({
           title: "✔️ Success",
           description: "Successfully Scanned and Recorded",
         });
-        navigate('/Dashboard/Meal Status');
-        console.log(response);
+        const clonedRes = JSON.parse(JSON.stringify(res));
+        navigate('/Dashboard/Meal Status', {
+          state: { res: clonedRes },
+        });
         
       } catch (error) {
         console.log(error);
@@ -52,6 +51,6 @@ export const useScanner = () => {
     handleScan,
     handleError,
     scanResult,
-    response
+    // response
   };
 };

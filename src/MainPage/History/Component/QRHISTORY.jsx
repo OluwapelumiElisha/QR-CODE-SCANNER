@@ -1,10 +1,10 @@
 import React from "react";
 import search from "@/assets/search.png";
 import { useQrHistory } from "../hook/useQrHistory";
-import { useQrCodeContext } from "../../../context/QrCodeContext";
+
+
 const QRHISTORY = () => {
   const {  response, handleCheckEachQrCode } = useQrHistory();
-  // const {  } = useQrCodeContext()
 
   if (response === null) {
     return (
@@ -16,16 +16,22 @@ const QRHISTORY = () => {
   return (
     <div>
       <div className="bg-black h-screen overflow-auto">
+        {/* D word Search  */}
         <p className="pt-10 text-white ml-12 font-extralight italic">Search</p>
+        {/* D word Search  */}
+
+        {/* Search div, both input and img tag */}
         <div className="flex">
           <input
             className="rounded-lg border-2 ml-12 w-[50%] bg-transparent"
-            placeholder="Search "
+            placeholder="Search"
             type="text"
           />
           <img className="-ms-8 w-5 h-5 mt-1" src={search} alt="" />
         </div>
-        <button  className="text-white"></button>
+        {/* Search div, both input and img tag */}
+
+        {/* Looping through an array where to display each qr images */}
         <div className="flex flex-wrap justify-center gap-6">
           {response?.map((data, i) => (
             <div
@@ -46,10 +52,13 @@ const QRHISTORY = () => {
             </div>
           ))}
         </div>
+          {/* Looping through an array where to display each qr images */}
 
+          {/* Loading div  */}
         <div className="flex items-center justify-center mt-12 mb-12">
           <p className=" mt-12 text-white text-xl">Loading...</p>
         </div>
+        {/* Loading div  */}
       </div>
     </div>
   );

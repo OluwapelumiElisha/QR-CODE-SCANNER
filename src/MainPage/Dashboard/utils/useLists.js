@@ -22,6 +22,6 @@ export const useList = [
   {
     name: "Settings",
     icon: setting,
-    path: "Setting",
+    path: "Settings",
   },
 ];

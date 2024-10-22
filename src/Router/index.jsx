@@ -10,6 +10,7 @@ import Scanner from "@/MainPage/QR Scanner/Component/Scanner";
 import Scanner2 from "@/MainPage/QR Scanner/Component/Scanner2";
 import QRHISTORY from "@/MainPage/History/Component/QRHISTORY";
 import EachQRHistory from "@/MainPage/History/Component/EachQRHistory";
+import CodeSettingsPage from "@/MainPage/Qr Code Settings/Component/CodeSettingsPage";
 
 
 export const routes = createBrowserRouter([
@@ -60,9 +61,14 @@ export const routes = createBrowserRouter([
           {
             path: "History",
             element:  <QRHISTORY/>
-          },{
+          },
+          {
             path: 'Each QR Code History',
             element: <EachQRHistory/>
+          },
+          {
+            path : "Settings",
+            element : <CodeSettingsPage/>
           }
         ],
       }
