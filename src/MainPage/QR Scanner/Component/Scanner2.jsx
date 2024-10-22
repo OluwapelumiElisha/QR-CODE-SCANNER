@@ -3,9 +3,16 @@ import MT from "@/assets/taken.png";
 import MARK from "@/assets/Check-Mark.png";
 import NT from "@/assets/not-taken.png";
 import CANCEL from "@/assets/Close.png";
+import { useScanner } from "../hook/useScanner";
 const Scanner2 = () => {
+  const {response } = useScanner()
   return (
     <div>
+      <button className="bg-red-600">  {
+        console.log(response)
+        
+      }gggg</button>
+    
       <div className="h-screen   bg-customColor">
         {/* QRNUMBER  */}
         <div className="flex items-center justify-center pt-10">

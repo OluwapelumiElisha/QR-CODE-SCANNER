@@ -1,10 +1,12 @@
 import React from "react";
 import search from "@/assets/search.png";
 import { useQrHistory } from "../hook/useQrHistory";
+import { useQrCodeContext } from "../../../context/QrCodeContext";
 const QRHISTORY = () => {
   const {  response, handleCheckEachQrCode } = useQrHistory();
+  // const {  } = useQrCodeContext()
 
-  if (!response) {
+  if (response === null) {
     return (
       <div className="flex justify-center">
         <h1 className="text-white">No Qr Code have been Generate...</h1>
@@ -29,7 +31,7 @@ const QRHISTORY = () => {
             <div
               key={i}
               onClick={() => handleCheckEachQrCode(data.qrNumber)}
-              className="p-3 w-1/3 sm:w-1/2 md:w-1/3 lg:w-1/6 xl:w-1/8 flex flex-col items-center border-2 border-white rounded-xl shadow-lg"
+              className="p-4 w-1/3 sm:w-1/2 md:w-1/3 lg:w-1/6 xl:w-1/8 flex flex-col items-center border-2 border-white rounded-xl shadow-lg"
             >
               <div className="bg-transparent rounded-xl p-0 flex flex-col items-center ">
                 <img

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import QrScanner from "react-qr-scanner";
-import { handleScanner } from "../hook/handleScanner";
+import {  useScanner } from "../hook/useScanner";
 
 const Scanner = () => {
-  const { handleScan, handleError, scanResult } = handleScanner();
+  const { handleScan, handleError, scanResult } = useScanner();
   return (
     <div className="h-screen bg-customColor overflow-auto">
       <div className="flex items-center justify-center pt-10">

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 export const useQrHistory = () =>{
     const [response, setresponse] = useState()
     const navigate = useNavigate()
+   
     const handleHistory = async () => {
         
         try {
@@ -25,22 +26,28 @@ export const useQrHistory = () =>{
         }
     };
     
-    const handleCheckEachQrCode = async (number)=>{
-        alert(number)
-        navigate('/Dashboard/Each QR Code History' )
+    const handleCheckEachQrCode = async (numberSent)=>{
+        
         try {
-            const res = await publicRequest.get(`/api/v1/history/${number}`)
+            const res = await publicRequest.get(`/api/v1/meal-status/${numberSent}`)
             console.log(res);
             toast({
                 title: "✔️",
-                description: `hecking History for Qr Code${number}`,
+                description: `Checking History for Qr Code ${numberSent}`,
               });
+            //   navigate(`/Dashboard/Each QR Code History?number=${numberSent}` )
+            //   navigate('/Dashboard/Each QR Code History', { state: { res, numberSent } } )
+            const clonedRes = JSON.parse(JSON.stringify(res)); // Deep clone of the `res` object
+            navigate('/Dashboard/Each QR Code History', { state: { res: clonedRes, numberSent } });
         } catch (error) {
             console.log(error);
-            
+            toast({
+                title: "❌❌❌",
+                description: error.response.data.message,
+            })
         }
         
-
+            
         
     }
     useEffect(() => {
@@ -49,8 +56,7 @@ export const useQrHistory = () =>{
     
     return {
         response, 
-        handleCheckEachQrCode
-
+        handleCheckEachQrCode,
     };
     
 }
