@@ -55,6 +55,8 @@ export const useQrHistory = () => {
     // fetching result from backend 
   };
 
+  
+
   useEffect(() => {
     handleHistory();
   }, []);

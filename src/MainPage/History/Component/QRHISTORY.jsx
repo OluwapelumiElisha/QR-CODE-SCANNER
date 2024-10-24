@@ -32,7 +32,7 @@ const QRHISTORY = () => {
         {/* Search div, both input and img tag */}
 
         {/* Looping through an array where to display each qr images */}
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6 mt-5">
           {response?.map((data, i) => (
             <div
               key={i}
