@@ -6,11 +6,11 @@ const Scanner = () => {
   const { handleScan, handleError, scanResult } = useScanner();
   
   // State to manage camera facing mode
-  const [facingMode, setFacingMode] = useState('environment'); // Start with the back camera
+  const [facingMode, setFacingMode] = useState('rear'); // Start with the back camera
 
   // Function to toggle camera facing mode
   const toggleCamera = () => {
-    setFacingMode((prevMode) => (prevMode === 'environment' ? 'user' : 'environment'));
+    setFacingMode((prevMode) => (prevMode === 'rear' ? 'user' : 'front'));
   };
 
   return (
