@@ -1,8 +1,7 @@
-import generate from "@/assets/QR Code.png"
+import generate from "@/assets/Qr Code.png"
 import scan from "@/assets/Fingerprint Scan.png"
 import history from "@/assets/Activity History.png"
-import setting from '@/assets/Advanced Search.png'
-
+import setting from '@/assets/Advanced Search.png'  
 export const useList = [
   {
     name: "Generate",
