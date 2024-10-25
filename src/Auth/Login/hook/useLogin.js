@@ -35,6 +35,8 @@ export const useLogin = () =>{
         try {
             const res = await publicRequest.post('/api/v1/loginuser', data)
             localStorage.setItem('token', res?.data?.token)
+            console.log(res);
+            
             toast({
                 title: "✔️✔️✔️",
                 description: "Welcome Back",

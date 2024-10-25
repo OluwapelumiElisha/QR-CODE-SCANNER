@@ -4,7 +4,7 @@ import { useQrHistory } from "../hook/useQrHistory";
 
 
 const QRHISTORY = () => {
-  const {  response, handleCheckEachQrCode } = useQrHistory();
+  const {  response, handleCheckEachQrCode, handleSearchWord, searchTerm, } = useQrHistory();
 
   if (response === null) {
     return (
@@ -13,6 +13,10 @@ const QRHISTORY = () => {
       </div>
     );
   }
+  const filteredResponse = response?.filter((data)=>(
+    data.qrNumber.includes(searchTerm)
+  ))
+  
   return (
     <div>
       <div className="bg-black h-screen overflow-auto">
@@ -26,6 +30,8 @@ const QRHISTORY = () => {
             className="rounded-lg border-2 ml-12 w-[50%] bg-transparent"
             placeholder="Search"
             type="text"
+            value={searchTerm}
+            onChange={handleSearchWord}
           />
           <img className="-ms-8 w-5 h-5 mt-1" src={search} alt="" />
         </div>
@@ -33,7 +39,7 @@ const QRHISTORY = () => {
 
         {/* Looping through an array where to display each qr images */}
         <div className="flex flex-wrap justify-center gap-6 mt-5">
-          {response?.map((data, i) => (
+          {filteredResponse?.map((data, i) => (
             <div
               key={i}
               onClick={() => handleCheckEachQrCode(data.qrNumber)}

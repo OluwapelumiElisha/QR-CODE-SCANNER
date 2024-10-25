@@ -12,7 +12,7 @@ export const useList = [
   {
     name: "Scan",
     icon: scan,
-    path: "Scan Code",
+    path: "",
   },
   {
     name: "History",

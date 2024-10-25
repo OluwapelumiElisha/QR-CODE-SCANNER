@@ -44,12 +44,12 @@ export const routes = createBrowserRouter([
         children :[
           {
             index: true,
-            element: <h1>Congratulation </h1>
+            element: <Scanner/>
           },
-          {
-            path: 'Scan Code',
-            element : <Scanner/>
-          },
+          // {
+          //   path: 'Scan Code',
+          //   element : <Scanner/>
+          // },
           {
             path: 'Generate QR Code',
             element : <QRG/>

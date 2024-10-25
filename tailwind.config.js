@@ -42,7 +42,13 @@ module.exports = {
         customColor: 'rgb(22, 22, 34)',
         customYellow: 'rgb(255, 201, 41)',
       },
+        spacing: {
+        '72': '18rem',  // e.g., adding pt-72, which is 18rem
+        '80': '20rem',  // pt-80 (20rem)
+        '96': '24rem',  // pt-96 (24rem)
+      },
     },
+   
     fontFamily: {
       pthin: ["Poppins-Thin", "sans-serif"],
       pextralight: ["Poppins-ExtraLight", "sans-serif"],
@@ -54,6 +60,13 @@ module.exports = {
       pextrabold: ["Poppins-ExtraBold", "sans-serif"],
       pblack: ["Poppins-Black", "sans-serif"],
     },
+    // extend: {
+    //   spacing: {
+    //     '72': '18rem',  // e.g., adding pt-72, which is 18rem
+    //     '80': '20rem',  // pt-80 (20rem)
+    //     '96': '24rem',  // pt-96 (24rem)
+    //   },
+    // },
   },
   plugins: [require("tailwindcss-animate")],
 }
