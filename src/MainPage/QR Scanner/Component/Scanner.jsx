@@ -18,7 +18,7 @@ const Scanner = () => {
       <div className="flex items-center justify-center pt-40">
         <div className="flex items-center justify-center w-60 h-60 rounded-lg border-2 border-orange-400 bg-gray-800">
           <QrScanner
-            facingMode={{ exact: facingMode }} // Use state to set facing mode
+            facingMode={'rear'} // Use state to set facing mode
             onError={handleError}
             onScan={handleScan}
            
@@ -34,12 +34,12 @@ const Scanner = () => {
         )}
       </div>
       <div className="flex items-center justify-center pt-10">
-        <button 
+        {/* <button 
           className="bg-orange-500 text-white px-4 py-2 rounded"
           onClick={toggleCamera}
         >
           Switch Camera
-        </button>
+        </button> */}
       </div>
     </div>
   );
