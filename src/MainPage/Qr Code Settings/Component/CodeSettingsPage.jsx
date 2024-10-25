@@ -38,7 +38,7 @@ const codeSettingsPage = () => {
       {/* Search div, both input and img tag */}
       <div className="flex">
         <input
-          className="rounded-lg border-2 ml-12 w-[50%] bg-transparent"
+          className="rounded-lg border-2 ml-12 w-[50%] bg-transparent text-white"
           placeholder="Search"
           type="text"
           value={searchTerm}
@@ -126,7 +126,7 @@ const codeSettingsPage = () => {
                               src={history?.scanHistory?.[meal] ? MT : NT}
                               alt={`${meal} icon`}
                             />
-                            <p className="text-black lg:text-xl font-bold md:text-xl sm:text-xl text-xs">
+                            <p className="text-white lg:text-xl font-bold md:text-xl sm:text-xl text-xs">
                               {history?.scanHistory?.[meal]
                                 ? "Meal Taken"
                                 : "Not Taken"}

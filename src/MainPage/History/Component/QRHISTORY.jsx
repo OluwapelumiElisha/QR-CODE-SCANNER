@@ -27,7 +27,7 @@ const QRHISTORY = () => {
         {/* Search div, both input and img tag */}
         <div className="flex">
           <input
-            className="rounded-lg border-2 ml-12 w-[50%] bg-transparent"
+            className="rounded-lg border-2 ml-12 w-[50%] bg-transparent text-white"
             placeholder="Search"
             type="text"
             value={searchTerm}

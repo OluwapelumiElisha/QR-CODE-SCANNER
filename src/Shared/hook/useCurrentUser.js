@@ -6,7 +6,7 @@ import { toast } from "@/hooks/use-toast";
 
 
 export const useCurrentUser = ()=>{
-    // const [currentUser, setcurrentUser] = useState();
+    const [currentUser, setcurrentUser] = useState();
     const token = localStorage.getItem("token");
    const navigate = useNavigate()
    async function getCurrentUser() {
@@ -20,9 +20,9 @@ export const useCurrentUser = ()=>{
       //   "http://localhost:4000/checkAuth",
       //   { headers: { Authorization: "Bearer " + token } }
       // );
-    // const res = await UserRequest().get("/checkAuth");
-    //   setcurrentUser(res?.data)
-    //   console.log(res);
+    const res = await UserRequest().post("/checkAuth");
+      setcurrentUser(res?.data)
+      console.log(res);
      
      } catch (error) {
       
@@ -50,7 +50,7 @@ export const useCurrentUser = ()=>{
 //     navigate("/");
 //   }
    useEffect(() => {
-    // getCurrentUser();
+    getCurrentUser();
 }, []);
 
 return{
