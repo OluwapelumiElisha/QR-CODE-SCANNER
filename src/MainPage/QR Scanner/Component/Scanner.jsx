@@ -1,29 +1,53 @@
-import React, { useState } from "react";
-import QrScanner from "react-qr-scanner";
+import React, { useState, useRef, useEffect } from "react";
 import { useScanner } from "../hook/useScanner";
 
 const Scanner = () => {
   const { handleScan, handleError, scanResult } = useScanner();
-
-  // State to manage camera facing mode
-  const [facingMode, setFacingMode] = useState('rear'); // Start with back camera
-  const [key, setKey] = useState(0); // Force re-render on toggle
+  const [facingMode, setFacingMode] = useState("environment"); // Default to rear camera
+  const videoRef = useRef(null);
 
   // Function to toggle camera facing mode
   const toggleCamera = () => {
-    setFacingMode((prevMode) => (prevMode === 'rear' ? 'front' : 'rear'));
-    setKey(prevKey => prevKey + 1); // Increment key to force component update
+    setFacingMode((prevMode) => (prevMode === "environment" ? "user" : "environment"));
   };
+
+  useEffect(() => {
+    const startCamera = async () => {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode }
+          });
+          if (videoRef.current) {
+            videoRef.current.srcObject = stream;
+          }
+        } catch (error) {
+          handleError(error);
+        }
+      } else {
+        handleError("Camera not supported");
+      }
+    };
+
+    startCamera();
+
+    // Stop previous stream when switching cameras
+    return () => {
+      if (videoRef.current && videoRef.current.srcObject) {
+        videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+      }
+    };
+  }, [facingMode, handleError]);
 
   return (
     <div className="h-screen bg-customColor overflow-auto">
       <div className="flex items-center justify-center pt-10">
         <div className="flex items-center justify-center w-60 h-60 rounded-lg border-2 border-orange-400 bg-gray-800">
-          <QrScanner
-            key={key} // Re-render on facing mode change
-            facingMode={facingMode}
-            onError={handleError}
-            onScan={handleScan}
+          <video
+            ref={videoRef}
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
           />
         </div>
       </div>
