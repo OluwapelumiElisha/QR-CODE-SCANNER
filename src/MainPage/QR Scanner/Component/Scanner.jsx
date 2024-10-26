@@ -1,43 +1,33 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useScanner } from "../hook/useScanner";
 
 const Scanner = () => {
   const { handleScan, handleError, scanResult } = useScanner();
-  const [facingMode, setFacingMode] = useState("environment"); // Default to rear camera
   const videoRef = useRef(null);
-
-  // Function to toggle camera facing mode
-  const toggleCamera = () => {
-    setFacingMode((prevMode) => (prevMode === "environment" ? "user" : "environment"));
-  };
 
   useEffect(() => {
     const startCamera = async () => {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        try {
-          const stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode }
-          });
-          if (videoRef.current) {
-            videoRef.current.srcObject = stream;
-          }
-        } catch (error) {
-          handleError(error);
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { exact: "environment" } } // Rear camera only
+        });
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
         }
-      } else {
-        handleError("Camera not supported");
+      } catch (error) {
+        handleError(error);
       }
     };
 
     startCamera();
 
-    // Stop previous stream when switching cameras
+    // Stop the stream when component unmounts
     return () => {
       if (videoRef.current && videoRef.current.srcObject) {
         videoRef.current.srcObject.getTracks().forEach(track => track.stop());
       }
     };
-  }, [facingMode, handleError]);
+  }, [handleError]);
 
   return (
     <div className="h-screen bg-customColor overflow-auto">
@@ -58,14 +48,6 @@ const Scanner = () => {
         ) : (
           <p className="text-white text-xl">No QR code detected yet</p>
         )}
-      </div>
-      <div className="flex items-center justify-center pt-10">
-        <button 
-          className="bg-orange-500 text-white px-4 py-2 rounded"
-          onClick={toggleCamera}
-        >
-          Switch Camera
-        </button>
       </div>
     </div>
   );
