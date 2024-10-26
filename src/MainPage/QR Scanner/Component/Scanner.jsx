@@ -4,13 +4,15 @@ import { useScanner } from "../hook/useScanner";
 
 const Scanner = () => {
   const { handleScan, handleError, scanResult } = useScanner();
-  
+
   // State to manage camera facing mode
-  const [facingMode, setFacingMode] = useState('rear'); // Start with the back camera
+  const [facingMode, setFacingMode] = useState('rear'); // Start with back camera
+  const [key, setKey] = useState(0); // Force re-render on toggle
 
   // Function to toggle camera facing mode
   const toggleCamera = () => {
     setFacingMode((prevMode) => (prevMode === 'rear' ? 'front' : 'rear'));
+    setKey(prevKey => prevKey + 1); // Increment key to force component update
   };
 
   return (
@@ -18,7 +20,8 @@ const Scanner = () => {
       <div className="flex items-center justify-center pt-10">
         <div className="flex items-center justify-center w-60 h-60 rounded-lg border-2 border-orange-400 bg-gray-800">
           <QrScanner
-            facingMode={facingMode} // Use state to set facing mode
+            key={key} // Re-render on facing mode change
+            facingMode={facingMode}
             onError={handleError}
             onScan={handleScan}
           />
@@ -41,7 +44,6 @@ const Scanner = () => {
         </button>
       </div>
     </div>
-    
   );
 };
 
