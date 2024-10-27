@@ -14,22 +14,22 @@ const Scanner = () => {
     console.error("QR Scanner Error:", err); // Handle any errors during scanning
   };
 
-  const switchCamera = () => {
-    // Toggle between front and back cameras
-    setFacingMode((prevMode) => (prevMode === 'environment' ? 'user' : 'environment'));
-  };
+  // const switchCamera = () => {
+  //   // Toggle between front and back cameras
+  //   setFacingMode((prevMode) => (prevMode === 'environment' ? 'user' : 'environment'));
+  // };
 
   return (
     <div>
       <h2>QR Code Scanner</h2>
       <QrScanner
         delay={300} // Delay between scans
-        facingMode={facingMode} // Set camera mode based on user selection
+        constraints={{aspectRatio: 1,  facingMode: { ideal: "environment" } }} // Set camera mode based on user selection
         onError={handleError} // Error handling function
         onScan={handleScan} // Function to handle scanned data
         style={{ width: '100%', height: 'auto' }} // Style for the scanner
       />
-      <button onClick={switchCamera}> Camera</button>
+      {/* <button onClick={switchCamera}> Camera</button> */}
     </div>
   );
 };
