@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import QrScanner from 'react-qr-scanner';
+import QrReader from 'react-qr-scanner'
 
 const Scanner = () => {
   const [facingMode, setFacingMode] = useState('environment'); // Default to back camera
@@ -21,14 +21,23 @@ const Scanner = () => {
 
   return (
     <div>
-      <h2>QR Code Scanner</h2>
-      <QrScanner
+      <h2> Scanner</h2>
+      {/* <QrScanner
         delay={300} // Delay between scans
-        constraints={{aspectRatio: 1,  facingMode: { ideal: "environment" } }} // Set camera mode based on user selection
+        constraints={{
+          facingMode: 'environment'
+      }}
+        // key="environment"// Set camera mode based on user selection
         onError={handleError} // Error handling function
         onScan={handleScan} // Function to handle scanned data
         style={{ width: '100%', height: 'auto' }} // Style for the scanner
-      />
+      /> */}
+      <QrReader
+          delay={300}
+          style={{ width: '100%', height: 'auto' }}
+          onError={handleError}
+          onScan={handleScan}
+          />
       {/* <button onClick={switchCamera}> Camera</button> */}
     </div>
   );
