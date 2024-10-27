@@ -41,6 +41,7 @@ module.exports = {
       colors: {
         customColor: 'rgb(22, 22, 34)',
         customYellow: 'rgb(255, 201, 41)',
+        customgray: '#D9D9D9',
       },
         spacing: {
         '72': '18rem',  // e.g., adding pt-72, which is 18rem

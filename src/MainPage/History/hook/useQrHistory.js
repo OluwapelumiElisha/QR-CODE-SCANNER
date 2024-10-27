@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 export const useQrHistory = () => {
   const [response, setresponse] = useState();
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isloading, setIsLoading] = useState(false)
 //   using dis for navigating 
   const navigate = useNavigate();
 //   using dis for navigating 
@@ -13,6 +14,7 @@ export const useQrHistory = () => {
     // function handleHistory 
   const handleHistory = async () => {
          // fetching result from backend 
+         setIsLoading(true)
     try {
       const res = await publicRequest.get("/api/v1/allhistory");
       if (res) {
@@ -23,6 +25,9 @@ export const useQrHistory = () => {
       setresponse(res?.data?.message);
     } catch (error) {
       console.log(error);
+    }
+    finally{
+      setIsLoading(false)
     }
     // fetching result from backend 
   };
@@ -71,6 +76,6 @@ export const useQrHistory = () => {
     handleCheckEachQrCode,
     handleSearchWord,
     searchTerm,
-    // filteredResponse
+    isloading
   };
 };

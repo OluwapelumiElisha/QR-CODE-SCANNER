@@ -4,7 +4,7 @@ import { useQrHistory } from "../hook/useQrHistory";
 
 
 const QRHISTORY = () => {
-  const {  response, handleCheckEachQrCode, handleSearchWord, searchTerm, } = useQrHistory();
+  const {isloading,  response, handleCheckEachQrCode, handleSearchWord, searchTerm, } = useQrHistory();
 
   if (response === null) {
     return (
@@ -16,10 +16,23 @@ const QRHISTORY = () => {
   const filteredResponse = response?.filter((data)=>(
     data.qrNumber.includes(searchTerm)
   ))
+
+
+  if (isloading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-customColor">
+        <div className="relative flex space-x-2">
+          <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-100"></div>
+          <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-200"></div>
+          <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-300"></div>
+        </div>
+      </div>
+    );
+  }
   
   return (
     <div>
-      <div className="bg-black h-screen overflow-auto">
+      <div className="bg-customColor h-screen overflow-auto">
         {/* D word Search  */}
         <p className="pt-10 text-white ml-12 font-extralight italic">Search</p>
         {/* D word Search  */}
@@ -62,7 +75,7 @@ const QRHISTORY = () => {
 
           {/* Loading div  */}
         <div className="flex items-center justify-center mt-12 mb-12">
-          <p className=" mt-12 text-white text-xl">Loading...</p>
+          <p className="opacity-0 mt-12 text-white text-xl">Loading...</p>
         </div>
         {/* Loading div  */}
       </div>

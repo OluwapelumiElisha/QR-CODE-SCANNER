@@ -7,10 +7,14 @@ export const useCodeSettings = () => {
   const [selectedQrNumber, setSelectedQrNumber] = useState("");
   const [response2, setResponse2] = useState()
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [loading, setLoading] = useState(false)
+  const [loadingUnblock, setLoadingUnblock] = useState(null)
+  const [loadingBlock, setLoadingBlock] = useState(null)
+  const [loadingDelete, setLoadingDelete] = useState(null)
   const handlePopUpHistory = async(qrNumber) => {
+    // alert(qrNumber)
+    setLoading(qrNumber)
     setSelectedQrNumber(qrNumber);
-    setIsPopUpVisible(true);
     try {
       const res = await publicRequest.get(`api/v1/history/${qrNumber}`)
       console.log(res);
@@ -19,18 +23,22 @@ export const useCodeSettings = () => {
         title: qrNumber,
         description: res?.data?.message,
       })
+      setIsPopUpVisible(true);
     } catch (error) {
       console.log(error);
       toast({
         title : "Error ❌❌❌",
         description : error?.response?.data?.message
       })
+      
+    }
+    finally{
+      setLoading(false)
     }
   };
 
   const handleBlockQrCode = async(qrNumber) => {
-    console.log(qrNumber);
-    
+    setLoadingBlock(qrNumber)
     try {
       const res = await publicRequest.post('/api/v1/block',  {qrNumber: qrNumber})
       console.log(res);
@@ -47,9 +55,13 @@ export const useCodeSettings = () => {
       });
       
     }
+    finally{
+      setLoadingBlock(false)
+    }
   };
 
   const handleUnblockQrCode = async(qrNumber) => {
+    setLoadingUnblock(qrNumber)
     try {
       const res = await publicRequest.post('/api/v1/unblock',  {qrNumber: qrNumber})
       console.log(res);
@@ -66,9 +78,13 @@ export const useCodeSettings = () => {
       });
       
     }
+    finally{
+      setLoadingUnblock(false)
+    }
   };
 
   const handleDeleteQrCode = async(qrNumber) => {
+    setLoadingDelete(qrNumber)
     try {
       const res = await publicRequest.delete(`/api/v1/delete/${qrNumber}`)
       console.log(res);
@@ -84,6 +100,9 @@ export const useCodeSettings = () => {
         description: error?.response?.data?.error
       });
       
+    }
+    finally{
+      setLoadingDelete(false)
     }
   };
 
@@ -108,6 +127,10 @@ export const useCodeSettings = () => {
     selectedQrNumber,
     response2,
     handleSearchChange, 
-    searchTerm
+    searchTerm, 
+    loading,
+    loadingUnblock,
+    loadingBlock,
+    loadingDelete
   };
 };
