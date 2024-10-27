@@ -21,7 +21,7 @@ const Scanner = () => {
 
   return (
     <div>
-      <h2> Scanner</h2>
+      <h2> Scanner hnn</h2>
       {/* <QrScanner
         delay={300} // Delay between scans
         constraints={{
@@ -37,6 +37,9 @@ const Scanner = () => {
           style={{ width: '100%', height: 'auto' }}
           onError={handleError}
           onScan={handleScan}
+          constraints={{
+            audio: false,
+            video: { facingMode: "environment" }}}
           />
       {/* <button onClick={switchCamera}> Camera</button> */}
     </div>
