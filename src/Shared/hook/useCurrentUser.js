@@ -15,7 +15,6 @@ export const useCurrentUser = () => {
     try {
       const res = await UserRequest().post("/api/v1/checkAuth");
       setcurrentUser(res);
-      // console.log(res);
     } catch (error) {
       console.log(error);
       if (error?.response?.data) {
@@ -24,16 +23,6 @@ export const useCurrentUser = () => {
           description: "Your Token Expire Pls Login Again",
         });
       }
-
-      //   navigate('/')
-      //   console.log("hello");
-      //  }
-      //  else{
-      //   toast({
-      //     title: "Hello",
-      //     description: "Please Check your Network",
-      //   })
-      //  }
     }
   };
      const handleLogout = () =>  {
