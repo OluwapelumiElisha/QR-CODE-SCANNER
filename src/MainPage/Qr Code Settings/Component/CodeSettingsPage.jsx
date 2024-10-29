@@ -11,9 +11,11 @@ import MARK from "@/assets/Check-Mark.png";
 import NT from "@/assets/not-taken.png";
 import CANCEL from "@/assets/Close.png";
 import load from "@/assets/progress_activity_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png";
+import { useCurrentUser } from "@/Shared/hook/useCurrentUser";
 
 const codeSettingsPage = () => {
   const { response, isloading } = useQrHistory();
+  const {handleLogout} = useCurrentUser()
   const {
     response2,
     handlePopUpHistory,
@@ -48,18 +50,21 @@ const codeSettingsPage = () => {
   }
   return (
     <div className="bg-customColor h-screen overflow-auto">
-      <p className="pt-10 text-white ml-12 font-extralight italic">Search</p>
-
-      <div className="flex">
+      {/* <p className="pt-10 text-white ml-16 font-extralight itali6">Search</p> */}
+      <div className="flex w-full justify-between ">
+        <div className="flex">
         <input
-          className="rounded-lg border-2 ml-12 w-[50%] bg-transparent text-white"
+          className="rounded-lg border-2 lg:ml-16 md:ml-9 sm:ml-10 ml-4 w-[120%] bg-transparent text-white mt-10"
           placeholder="Search"
           type="text"
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <img className="-ms-8 w-5 h-5 mt-1" src={search} alt="Search icon" />
+        <img className="-ms-8 w-5 h-5 mt-11" src={search} alt="Search icon" />
       </div>
+      <Button onClick={handleLogout} className="mr-5 bg-red-600 mt-10">Log Out</Button>
+      </div>
+      
 
       <div className="flex flex-wrap justify-center gap-4 mt-4">
         {filteredResponse?.map((data, i) => (
