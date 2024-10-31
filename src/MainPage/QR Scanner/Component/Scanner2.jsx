@@ -34,9 +34,9 @@ const Scanner2 = () => {
 
         <div className="mt-2 ml-[15%] sm:ms-[27%] md:ml-[27%] lg:ml-[29.5%] flex  justify-center w-[70%] lg:w-[40%] md:w-[50%] sm:w-[40%] h-10 rounded-lg border-2 border-orange-400 bg-customgray">
           <div className="flex items-center justify-between w-full ">
-            <img className="w-7 h-7" src={data?.scanHistory?.breakfast ? MT : NT} alt="MT Logo" />
+            <img className="w-6 h-6 ml-2" src={data?.scanHistory?.breakfast ? MT : NT} alt="MT Logo" />
             <p className="text-black text-xl font-bold">{data?.scanHistory?.breakfast ? "Meal Taken" : "Not Taken"}</p>
-            <img className="" src={data?.scanHistory?.breakfast ? MARK : CANCEL} alt="Mark Logo" />
+            <img className="w-6 h-6 mr-2" src={data?.scanHistory?.breakfast ? MARK : CANCEL} alt="Mark Logo" />
           </div>
         </div>
         {/* FIRST BOX  */}
@@ -50,9 +50,9 @@ const Scanner2 = () => {
 
         <div className="mt-2 ml-[15%] sm:ms-[27%] md:ml-[27%] lg:ml-[29.5%] flex justify-center w-[70%] lg:w-[40%] md:w-[50%] sm:w-[40%] h-10 rounded-lg border-2 border-orange-400 bg-customgray">
           <div className="flex items-center justify-between w-full ">
-          <img className="w-7 h-7" src={data?.scanHistory?.lunch ? MT : NT} alt="MT Logo" />
+          <img className="w-6 h-6 ml-2" src={data?.scanHistory?.lunch ? MT : NT} alt="MT Logo" />
             <p className="text-black text-xl font-bold">{data?.scanHistory?.lunch ? "Meal Taken" : "Not Taken"}</p>
-            <img className="" src={data?.scanHistory?.lunch ? MARK : CANCEL} alt="Mark Logo" />
+            <img className="w-6 h-6 mr-2" src={data?.scanHistory?.lunch ? MARK : CANCEL} alt="Mark Logo" />
           </div>
         </div>
 
@@ -67,9 +67,9 @@ const Scanner2 = () => {
 
         <div className="mt-2 ml-[15%] sm:ms-[27%] md:ml-[27%] lg:ml-[29.5%] flex  justify-center w-[70%] lg:w-[40%] md:w-[50%] sm:w-[40%] h-10 rounded-lg border-2 border-orange-400 bg-customgray">
           <div className="flex items-center justify-between w-full ">
-          <img className="w-7 h-7" src={data?.scanHistory?.dinner ? MT : NT} alt="MT Logo" />
+          <img className="w-6 h-6 ml-2" src={data?.scanHistory?.dinner ? MT : NT} alt="MT Logo" />
             <p className="text-black text-xl font-bold">{data?.scanHistory?.dinner ? "Meal Taken" : "Not Taken"}</p>
-            <img className="" src={data?.scanHistory?.dinner ? MARK : CANCEL} alt="Mark Logo" />
+            <img className="w-6 h-6 mr-2" src={data?.scanHistory?.dinner ? MARK : CANCEL} alt="Mark Logo" />
           </div>
         </div>
         {/* THRID BOX  */}
