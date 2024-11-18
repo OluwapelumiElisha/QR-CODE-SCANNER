@@ -19,7 +19,7 @@ const ContEmail = () => {
     <div className="bg-customColor h-screen flex flex-col justify-center items-center overflow-auto">
       {/* Logo Section */}
       <div className="flex justify-center items-center">
-        <img className="w-60 pt-64" src={logo} alt="Logo" />
+        <img className="w-60 lg:pt-64 md:pt-64 sm:pt-48 pt-48" src={logo} alt="Logo" />
       </div>
 
       {/* Text Section */}
