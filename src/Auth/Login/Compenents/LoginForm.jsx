@@ -87,9 +87,9 @@ const LoginForm = () => {
           
 
           <div className='flex justify-center'>
-            <p className='mt-5 text-white'>Don’t have an account?</p>
+            {/* <p className='mt-5 text-white'>Don’t have an account?</p> */}
             <Link to={'/SignUp'}>
-             <p className='text-customYellow pl-2 mt-5 font-bold cursor-pointer'>Signup</p>
+             {/* <p className='text-customYellow pl-2 mt-5 font-bold cursor-pointer'>Signup</p> */}
             </Link>
            
           </div>
