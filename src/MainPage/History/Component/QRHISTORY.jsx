@@ -4,31 +4,31 @@ import { useQrHistory } from "../hook/useQrHistory";
 
 
 const QRHISTORY = () => {
-  const {isloading,  response, handleCheckEachQrCode, handleSearchWord, searchTerm, } = useQrHistory();
-
-  if (response === null) {
-    return (
-      <div className="flex justify-center">
-        <h1 className="text-white">No Qr Code have been Generate...</h1>
-      </div>
-    );
-  }
-  const filteredResponse = response?.filter((data)=>(
+  const {  response, handleCheckEachQrCode, handleSearchWord, searchTerm, } = useQrHistory();
+  const storedArray = JSON.parse(localStorage.getItem('QrCodeHistory'));
+  // if (response === null) {
+  //   return (
+  //     <div className="flex justify-center">
+  //       <h1 className="text-white">No Qr Code have been Generate...</h1>
+  //     </div>
+  //   );
+  // }
+  const filteredResponse = storedArray?.filter((data)=>(
     data.qrNumber.includes(searchTerm)
   ))
 
 
-  if (isloading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-customColor">
-        <div className="relative flex space-x-2">
-          <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-100"></div>
-          <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-200"></div>
-          <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-300"></div>
-        </div>
-      </div>
-    );
-  }
+  // if (isloading) {
+  //   return (
+  //     <div className="flex items-center justify-center min-h-screen bg-customColor">
+  //       <div className="relative flex space-x-2">
+  //         <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-100"></div>
+  //         <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-200"></div>
+  //         <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-300"></div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
   
   return (
     <div>

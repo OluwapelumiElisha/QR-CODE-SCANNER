@@ -18,7 +18,7 @@ const QRGenerator = () => {
 
       <div className="flex items-center justify-center mt-12">
         <Button
-          onClick={handleGenerateqrcode}
+          // onClick={handleGenerateqrcode}
           disabled={loading}
           className=" text-white font-pbold text-xl mt-4 bg-customYellow w-120 px-6 py-3 flex justify-center items-center"
         >

@@ -14,7 +14,8 @@ import load from "@/assets/progress_activity_24dp_E8EAED_FILL0_wght400_GRAD0_ops
 import { useCurrentUser } from "@/Shared/hook/useCurrentUser";
 
 const codeSettingsPage = () => {
-  const { response, isloading } = useQrHistory();
+  // const { response, isloading } = useQrHistory();
+  const storedArray = JSON.parse(localStorage.getItem('QrCodeHistory'));
   const {handleLogout} = useCurrentUser()
   const {
     response2,
@@ -33,21 +34,21 @@ const codeSettingsPage = () => {
     loadingDelete
   } = useCodeSettings();
 
-  const filteredResponse = response?.filter((data) =>
+  const filteredResponse = storedArray?.filter((data) =>
     data.qrNumber.includes(searchTerm)
   );
 
-  if (isloading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-customColor">
-        <div className="relative flex space-x-2">
-          <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-100"></div>
-          <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-200"></div>
-          <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-300"></div>
-        </div>
-      </div>
-    );
-  }
+  // if (isloading) {
+  //   return (
+  //     <div className="flex items-center justify-center min-h-screen bg-customColor">
+  //       <div className="relative flex space-x-2">
+  //         <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-100"></div>
+  //         <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-200"></div>
+  //         <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-300"></div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
   return (
     <div className="bg-customColor h-screen overflow-auto">
       {/* <p className="pt-10 text-white ml-16 font-extralight itali6">Search</p> */}
