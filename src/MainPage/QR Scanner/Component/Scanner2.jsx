@@ -4,18 +4,24 @@ import MARK from "@/assets/Check-Mark.png";
 import NT from "@/assets/not-taken.png";
 import CANCEL from "@/assets/Close.png";
 import { useScanner } from "../hook/useScanner";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Back from "@/assets/chevron_backward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png"
+
 const Scanner2 = () => {
   const location = useLocation()
   const scannerDetails = location?.state?.res
   const data = scannerDetails?.data?.qrCode
   return (
     <div>
-      
-    
+ 
       <div className="h-screen   bg-customColor">
+        {/* <div className="h-screen   bg-customColor overflow-auto"> */}
+      <Link to={"/Dashboard/History"}>
+      <img src={Back} className="pt-0 ml-0 lg:ml-80 md:ml-40" alt="" />
+      </Link>
         {/* QRNUMBER  */}
         <div className="flex items-center justify-center pt-10">
+        {/* <h1 className='text-white'>Back</h1> */}
           <h1 className="text-3xl text-white font-bold">{data?.qrNumber}</h1>
         </div>
         {/* QRNUMBER  */}

@@ -4,36 +4,35 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const useQrHistory = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isloading, setIsLoading] = useState(false)
-//   using dis for navigating 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isloading, setIsLoading] = useState(false);
+  //   using dis for navigating
   const navigate = useNavigate();
-//   using dis for navigating 
+  //   using dis for navigating
 
-    // function handleHistory 
+  // function handleHistory
   const handleHistory = async () => {
-         // fetching result from backend 
-         setIsLoading(true)
+    // fetching result from backend
+    setIsLoading(true);
     try {
       const res = await publicRequest.get("/api/v1/allhistory");
-     
-      let data = res?.data?.message
-      localStorage.setItem('QrCodeHistory', JSON.stringify(data));
+      // console.log(res, 'hello');
+
+      let data = res?.data?.qrCodes;
+      localStorage.setItem("QrCodeHistory", JSON.stringify(data));
       // console.log(data);
-      
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
-    finally{
-      setIsLoading(false)
-    }
-    // fetching result from backend 
+    // fetching result from backend
   };
-   // function handleHistory 
-   
-   // function handleCheckEachQrCode
+  // function handleHistory
+
+  // function handleCheckEachQrCode
   const handleCheckEachQrCode = async (numberSent) => {
-    // fetching result from backend 
+    // fetching result from backend
     try {
       const res = await publicRequest.get(`/api/v1/meal-status/${numberSent}`);
 
@@ -53,14 +52,12 @@ export const useQrHistory = () => {
         description: error.response.data.message,
       });
     }
-    // fetching result from backend 
+    // fetching result from backend
   };
 
-  const handleSearchWord = (event) =>{
-    setSearchTerm(event.target.value)
-  }
-
- 
+  const handleSearchWord = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   useEffect(() => {
     handleHistory();
@@ -68,10 +65,19 @@ export const useQrHistory = () => {
 
   
 
+  useEffect(() => {
+    // Detect browser refresh
+    const navType = performance.getEntriesByType("navigation")[0]?.type;
+
+    if (navType === "reload") {
+      localStorage.removeItem("QrCodeHistory");
+    }
+  }, []);
+
   return {
     handleCheckEachQrCode,
     handleSearchWord,
     searchTerm,
-    isloading
+    isloading,
   };
 };

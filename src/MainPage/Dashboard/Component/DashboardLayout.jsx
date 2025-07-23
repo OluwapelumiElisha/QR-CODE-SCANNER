@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const DashboardLayout = ({ children }) => {
   return (
     <div className="dashboard-layout ">
-      <div className="relative  bg-customColor ">
+      <div className="relative  bg-customColor z-50">
       {/* <div className="absolute top-3 right-0"> */}
           <section>
             {children}</section>

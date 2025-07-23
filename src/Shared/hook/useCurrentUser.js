@@ -14,6 +14,8 @@ export const useCurrentUser = () => {
     }
     try {
       const res = await UserRequest().post("/api/v1/checkAuth");
+      console.log(res);
+      
       setcurrentUser(res);
     } catch (error) {
       console.log(error);

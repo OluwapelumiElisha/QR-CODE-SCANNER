@@ -1,5 +1,5 @@
 import { toast } from "@/hooks/use-toast";
-import { publicRequest } from "@/Shared/API/Request";
+import { publicRequest, UserRequest } from "@/Shared/API/Request";
 import { useState } from "react";
 
 export const useQRGenerator = () => {
@@ -8,7 +8,7 @@ export const useQRGenerator = () => {
   const handleGenerateqrcode = async () => {
     setloading(true);
     try {
-      const res = await publicRequest.post("/api/v1/generate");
+      const res = await UserRequest().post("/api/v1/generate");
       console.log(res);
       setresponse(res);
       toast({
@@ -17,14 +17,17 @@ export const useQRGenerator = () => {
       });
     } catch (error) {
       console.log(error);
-      // toast({
-      //     title: "✔️✔️✔️",
-      //     description: res?.data?.message,
-      //   });
+      toast({
+          title: "❌❌❌",
+          description: error?.response?.data?.message,
+        });
     } finally {
       setloading(false);
     }
   };
+  
+
+ 
 
   return {
     handleGenerateqrcode,

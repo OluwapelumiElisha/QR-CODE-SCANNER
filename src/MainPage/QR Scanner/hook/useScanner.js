@@ -1,21 +1,24 @@
 import { toast } from "@/hooks/use-toast";
 import { publicRequest } from "@/Shared/API/Request";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 export const useScanner = () => {
   const [scanResult, setScanResult] = useState(null); // To store the scan result
-  const navigate = useNavigate() 
+  const navigate = useNavigate()
 
 
   const handleScan = async (data) => {
-   
-    if (data && data.text) {
-      setScanResult(data); // Store the scanned QR code data
-      console.log(data);
 
-      const qrNumber = data.text.split('#')[1];  // Extract "016"
-      console.log(qrNumber);
+    if (data && data.text) {
+      // console.log(data);
+      
+      const qrNumber = data.text.includes('/redirect/')
+      ? data.text.split('/redirect/')[1]
+      : null;
+      setScanResult(qrNumber); // Store the scanned QR code data
+      
+      // console.log(qrNumber);
       try {
         const res = await publicRequest.post('/api/v1/scan', { qrNumber });
         console.log(res);
@@ -27,7 +30,7 @@ export const useScanner = () => {
         navigate('/Dashboard/Meal Status', {
           state: { res: clonedRes },
         });
-        
+
       } catch (error) {
         console.log(error);
 

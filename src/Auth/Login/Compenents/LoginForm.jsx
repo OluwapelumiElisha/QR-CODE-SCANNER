@@ -4,8 +4,8 @@ import { LoginInput } from '../utils/LoginInput';
 import { Form } from '@/components/ui/form';
 import GenericForminput from '@/Shared/GenericFormInput';
 import { useLogin } from '../hook/useLogin';
-import hidden from '@/assets/hidden_2355322.png'
-import eye from '@/assets/eye_660383.png'
+import hidden from '@/assets/eye-off.svg'
+import eye from '@/assets/eye.svg'
 import { LoginInput2 } from '../utils/LoginInput2';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -68,8 +68,8 @@ const LoginForm = () => {
                   {elem.name === 'password' && (
                     <span onClick={togglePasswordVisibility} className="absolute right-2 top-3 cursor-pointer text-sm text-blue-500">
                       {isPasswordVisible ? 
-                        <img src={eye} className="w-4 h-4" alt="Show" /> : 
-                        <img src={hidden} className="w-4 h-4" alt="Hide" />
+                        <img src={eye} className="w-4 h-4 mr-3" alt="Show" /> : 
+                        <img src={hidden} className="w-4 h-4 mr-3" alt="Hide" />
                       }
                     </span>
                   )}
@@ -87,9 +87,9 @@ const LoginForm = () => {
           
 
           <div className='flex justify-center'>
-            {/* <p className='mt-5 text-white'>Don’t have an account?</p> */}
+            <p className='mt-5 text-white'>Don’t have an account?</p>
             <Link to={'/SignUp'}>
-             {/* <p className='text-customYellow pl-2 mt-5 font-bold cursor-pointer'>Signup</p> */}
+             <p className='text-customYellow pl-2 mt-5 font-bold cursor-pointer'>Signup</p>
             </Link>
            
           </div>

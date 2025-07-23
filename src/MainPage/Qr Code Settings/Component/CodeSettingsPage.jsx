@@ -17,6 +17,7 @@ const codeSettingsPage = () => {
   // const { response, isloading } = useQrHistory();
   const storedArray = JSON.parse(localStorage.getItem('QrCodeHistory'));
   const {handleLogout} = useCurrentUser()
+  
   const {
     response2,
     handlePopUpHistory,
@@ -53,15 +54,15 @@ const codeSettingsPage = () => {
     <div className="bg-customColor h-screen overflow-auto">
       {/* <p className="pt-10 text-white ml-16 font-extralight itali6">Search</p> */}
       <div className="flex w-full justify-between ">
-        <div className="flex">
+        <div className="flex justify-center items-center">
         <input
-          className="rounded-lg border-2 lg:ml-16 md:ml-9 sm:ml-10 ml-4 w-[120%] bg-transparent text-white mt-10"
+          className="rounded-lg border-2 lg:ml-16 md:ml-9 sm:ml-10 ml-4 w-[120%] bg-transparent text-white mt-10 p-2"
           placeholder="Search"
           type="text"
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <img className="-ms-8 w-5 h-5 mt-11" src={search} alt="Search icon" />
+        <img className="-ms-8 w-4 h-4 mt-10" src={search} alt="Search icon" />
       </div>
       <Button onClick={handleLogout} className="mr-5 bg-red-600 mt-10">Log Out</Button>
       </div>

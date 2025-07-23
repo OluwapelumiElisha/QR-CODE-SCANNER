@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,6 +8,45 @@
   </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Youth Camp Anniversary 2025</title>
+
+    <!-- App Icon & Manifest -->
+    <link rel="icon" href="/web-app-manifest-192x192.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/web-app-manifest-192x192.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Optional: Apple Splash Screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Youth'25" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- ✅ Inject React Fast Refresh preamble manually -->
+    <script type="module">
+      import RefreshRuntime from "/@react-refresh";
+      RefreshRuntime.injectIntoGlobalHook(window);
+      window.$RefreshReg$ = () => {};
+      window.$RefreshSig$ = () => (type) => type;
+      window.__vite_plugin_react_preamble_installed__ = true;
+    </script>
+
+    <!-- Your actual app entry -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
