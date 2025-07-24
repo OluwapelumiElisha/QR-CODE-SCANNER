@@ -23,21 +23,20 @@
   <meta name="theme-color" content="#ffffff" />
   <title>Youth Camp Anniversary 2025</title>
 
-  <!-- PWA: Manifest & Icons -->
+
   <link rel="manifest" href="/manifest.json" />
   <link rel="icon" href="/web-app-manifest-192x192.png" type="image/png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/web-app-manifest-192x192.png" />
 
-  <!-- PWA Capable (Chrome & Safari) -->
-  <meta name="mobile-web-app-capable" content="yes" /> <!-- ✅ for Android Chrome -->
-  <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- ✅ still supported on iOS -->
+  <meta name="mobile-web-app-capable" content="yes" /> 
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Youth'25" />
 </head>
   <body>
     <div id="root"></div>
 
-    <!-- ✅ Inject React Fast Refresh preamble manually -->
+
     <script type="module">
       import RefreshRuntime from "/@react-refresh";
       RefreshRuntime.injectIntoGlobalHook(window);
@@ -46,7 +45,6 @@
       window.__vite_plugin_react_preamble_installed__ = true;
     </script>
 
-    <!-- Your actual app entry -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html> -->
