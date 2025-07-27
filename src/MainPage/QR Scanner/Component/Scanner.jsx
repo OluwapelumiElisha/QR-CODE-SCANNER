@@ -171,7 +171,7 @@ const Scanner = () => {
   return (
     <div className="h-screen bg-customColor overflow-auto">
       <div className="flex justify-center text-center pt-10">
-        <p className="text-white font-pregular text-xl">
+        <p className="text-white font-pregular text-xl mt-32">
           You are Welcome back, {currentUser?.data?.username} ❤️
         </p>
       </div>

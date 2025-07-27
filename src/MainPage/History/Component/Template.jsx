@@ -23,7 +23,8 @@ const Template = () => {
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = image;
-      link.download = "a4-image.png";
+      // link.download = "a4-image.png";
+      link.download =`QR-${response?.qrNumber}.png`
       link.click();
     }
   };

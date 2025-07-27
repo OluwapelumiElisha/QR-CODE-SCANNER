@@ -132,7 +132,7 @@ const codeSettingsPage = () => {
       </div>
 
       {isPopUpVisible && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 overflow-auto pt-96">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 overflow-auto -pt-20 mb-12">
           <div className="bg-customColor rounded-lg p-8 w-[90%] sm:w-[80%] md:w-[60%] lg:w-[50%]">
             <div className="border-2 border-white p-8 rounded-2xl space-y-6 overflow-auto">
               {response2?.history?.map((history, i) => (

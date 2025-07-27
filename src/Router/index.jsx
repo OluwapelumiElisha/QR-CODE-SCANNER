@@ -12,6 +12,7 @@ import QRHISTORY from "@/MainPage/History/Component/QRHISTORY";
 import EachQRHistory from "@/MainPage/History/Component/EachQRHistory";
 import CodeSettingsPage from "@/MainPage/Qr Code Settings/Component/CodeSettingsPage";
 import Template from "@/MainPage/History/Component/Template";
+import Addlive from "@/MainPage/add-link/Component/Addlive";
 
 
 export const routes = createBrowserRouter([
@@ -75,6 +76,10 @@ export const routes = createBrowserRouter([
             path : "Template",
             element : <Template/>
           },
+          {
+            path: 'add-link',
+            element : <Addlive/>
+          }
         ],
       }
 ])
